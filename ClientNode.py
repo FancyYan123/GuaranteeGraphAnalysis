@@ -27,8 +27,7 @@ class ClientNode:
         :param overdue_sum:
         :return:
         """
-        positive = math.fabs(due_sum)
-        negetive = math.fabs(overdue_sum)
-        if positive + negetive > 0:
-            self.positive_label = positive / (positive + negetive)
+        tmp = (due_sum - overdue_sum) / 10000
+        positive_label = 1 / (1 + math.exp(-tmp))
+        self.positive_label = positive_label
         return self.positive_label

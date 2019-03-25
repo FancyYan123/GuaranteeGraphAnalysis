@@ -11,6 +11,11 @@ class GuaranteeGraph(object):
         self.nodes, self.graph = self.__construct_guarantee_edges(clients, guarantee_filepath)
 
     def __construct_client_nodes(self, client_filepath: str) -> dict:
+        """
+        TODO：拿到真的数据后需要更改文件读取方式（以及格式）
+        :param client_filepath: 客户文件路径
+        :return: dict(key: client_id, value: ClientNode)
+        """
         allnodes = dict()
         clientfile = open(client_filepath, 'r')
         for line in clientfile:
@@ -21,6 +26,12 @@ class GuaranteeGraph(object):
         return allnodes
 
     def __construct_guarantee_edges(self, clients: dict, guarantee_filepath: str):
+        """
+        TODO: 更改文件读取方式（以及格式）
+        :param clients: 已经创建的客户节点
+        :param guarantee_filepath: 担保合同汇总文件
+        :return: dict(key: client_id, value: renewed ClientNode)
+        """
         graph, client_loan = dict(), dict()
         for each in clients:
             client_loan[each] = [0, 0]
